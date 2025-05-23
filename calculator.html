@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>calculator</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+
+	.calculator{
+		border: 8px ridge snow;
+		background: black;
+	}
+
+	body{
+	background: greenyellow;
+	display: flex;
+	align-items: center;
+	height: 100vh;
+	flex-direction: column;
+	}
+
+	input{
+		height: 50px;
+		width: 250px;
+		margin: 5px;
+		background:ridge snow;
+		border: 3px ridge snow;
+		align-items: center;
+		justify-content: center;
+		font-size: 40px;
+
+	}
+	button{
+		height: 40px;
+		width: 50px;
+		padding: 10px;
+		margin: 7px;
+		border: 3px ridge snow;
+		
+	}
+
+	button:hover{
+		color: white;
+		background:#f67c14;
+	}
+
+	.equalbtn{
+		background: #f67c14;
+	}
+</style>
+<body>
+<div class="calculator">
+	<input type="text" id="calc" placeholder="0">
+<div>
+<button class="operator ac">AC</button>
+<button class="operator del">DEL</button>
+<button class="operator">%</button>
+<button class="operator">/</button>
+</div>
+<div>
+	<button>7</button>
+	<button>8</button>
+	<button>9</button>
+	<button class="operator">*</button>
+</div>
+<div>
+	<button>4</button>
+	<button>5</button>
+	<button>6</button>
+	<button class="operator">-</button>
+</div>
+<div>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button class="operator">+</button>
+</div>
+<div>
+	<button>00</button>
+	<button>0</button>
+	<button>.</button>
+	<button class="equalbtn">=</button>
+
+</div>
+</div>
+<script >
+	let display = document.getElementById('calc');
+	let buttons = document.querySelectorAll('button');
+
+	let buttonsArray = Array.from(buttons);
+
+	let string = '';
+	buttonsArray.forEach(btn => {
+
+		btn.addEventListener('click',(e) =>{
+
+			if(e.target.innerHTML == 'DEL'){
+				string = string.substring(0, string.length-1);
+					display.value = string;
+			}else if(e.target.innerHTML == 'AC'){
+				string='';
+				display.value = string;
+
+			}else if(e.target.innerHTML == '='){
+			string = eval(string);
+			display.value = string;
+			}
+
+
+
+			else{
+			string += e.target.innerHTML;
+				display.value = string;
+			}
+		
+		});
+			// body...
+		});
+
+
+	
+</script>
+</body>
+</html>
